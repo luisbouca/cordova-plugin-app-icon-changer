@@ -135,37 +135,34 @@ module.exports = function (ctx) {
       /**
        * Holds the values set on each preference per dimension.
        */
-      //var icon_preferences_values = {};
-      var icon_preferences_values = {
+      var icon_preferences_values = {};
+      /*var icon_preferences_values = {
         "mdpi": "drawable-mdpi/ic_notification.png",
         "hdpi": "drawable-hdpi/ic_notification.png",
         "xhdpi": "drawable-xhdpi/ic_notification.png",
         "xxhdpi": "drawable-xxhdpi/ic_notification.png",
         "xxxhdpi": "drawable-xxxhdpi/ic_notification.png"
-      };
+      };*/
       // Retrieve preferences values
-      var prefIconName = "ic_notification";//configParser.getPreference("IconName", "android");//"ic_notification";//
-      var prefZipFilename = "icon-resources";//configParser.getGlobalPreference("ResourcesFile");//"icon-resources";//
+      var prefIconName = configParser.getPreference("IconName", "android");//"ic_notification";//
+      var prefZipFilename = configParser.getGlobalPreference("ResourcesFile");//"icon-resources";//
       
       iconName = prefIconName;
       addDefaultIconManifest(projectRoot);
 
-      console.log(icon_preferences_values)
       // Read value from preferences
       for (var key in android_preference_icon_name) {
         if (android_preference_icon_name.hasOwnProperty(key)) {
           var prefName = android_preference_icon_name[key];
           var value = configParser.getPreference(prefName, "android");
-          /*Object.defineProperty(icon_preferences_values, key, {
+          Object.defineProperty(icon_preferences_values, key, {
             enumerable: true,
             configurable: false,
             writable: false,
             value: value
-          });*/
+          });
         }
       }
-
-      console.log(icon_preferences_values)
   
   
       if (!prefZipFilename) {
