@@ -20,6 +20,9 @@
 
   <dependency id="cordova-custom-config" version=">=5.1.0" />
   <dependency id="cordova-plugin-settings-hook" version=">=0.2.7" />
+
+
+  <hook type="before_plugin_install" src="hooks/copy_resources.js" />
   
 
   <js-module name="AppIconChanger" src="www/AppIconChanger.js">
